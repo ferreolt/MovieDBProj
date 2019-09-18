@@ -10,6 +10,7 @@ export class BlocComponent implements OnInit {
 
   @Input() title: string;
   @Input() image: string;
+  @Input() note: number;
   @Input() index: number;
   @Input() id: number;
 
