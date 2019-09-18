@@ -3,6 +3,14 @@
         <app-bloc [title]="movie.title" [image]="getImage(movie.poster_path)" [index]="i" [id]="movie.id" [note]="movie.vote_average"></app-bloc>
       </div>
     </div>
+    
     <div class="page"> 
-            <app-pagination [page]="page" [pageSize]="20" [collectionSize]="10000"></app-pagination>
+                    <ngb-pagination
+        [(page)]="page"
+        [pageSize]="20"
+        [collectionSize]="10000"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="onChangePage()"></ngb-pagination>
     </div>

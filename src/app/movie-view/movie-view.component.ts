@@ -12,6 +12,8 @@ export class MovieViewComponent implements OnInit, OnDestroy {
   movieSubscription: Subscription;
   imgURL = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/';
   page = 1;
+  pageSize = this.movieService.pageSize;
+  collectionSize = this.movieService.collectionSize;
 
   constructor(private movieService: MovieService)  { }
 
@@ -26,6 +28,10 @@ export class MovieViewComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.movieSubscription.unsubscribe();
+  }
+
+  onChangePage() {
+    this.movieService.getPopularMoviesFromServer(this.page);
   }
 
   getImage(path: string) {

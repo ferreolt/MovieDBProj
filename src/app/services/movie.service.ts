@@ -13,7 +13,8 @@ export class MovieService {
   moviesSubject = new Subject<any[]>();
   APIkey = '35acf57e110152e86051b27d867edbc2';
    private movies = [];
-    response: PagedResponse;
+   pageSize: number;
+   collectionSize: number;
 
       constructor(private httpClient: HttpClient) { }
 
@@ -34,7 +35,10 @@ export class MovieService {
           .subscribe(
               (response: PagedResponse) => {
                   this.movies = response.results;
-                  this.response = response;
+                  this.pageSize = response.total_results / response.total_pages;
+                  console.log(this.pageSize);
+                  this.collectionSize = response.total_results;
+                  console.log(this.collectionSize);
                   console.log(response);
                   this.emitMovieSubject();
               },
