@@ -1,0 +1,6 @@
+<div class="container">
+<h1>{{title}} {{note * 10}}%</h1>
+<div class="image" ngbPopover="{{review}}" popoverTitle="Overview" [openDelay]="400" triggers="mouseenter:mouseleave" placement="right" container="body">
+       <a [routerLink]="[id]"> <img src="{{image}}" alt="movie"></a>
+</div>
+</div>
