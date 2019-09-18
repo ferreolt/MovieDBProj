@@ -13,6 +13,7 @@ export class BlocComponent implements OnInit {
   @Input() note: number;
   @Input() index: number;
   @Input() id: number;
+  @Input() review: string;
 
   ngOnInit() {
   }
