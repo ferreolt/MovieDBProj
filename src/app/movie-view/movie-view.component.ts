@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class MovieViewComponent implements OnInit, OnDestroy {
   movies: any[];
   movieSubscription: Subscription;
+  imgURL = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/';
 
   constructor(private movieService: MovieService)  { }
 
@@ -25,4 +26,7 @@ export class MovieViewComponent implements OnInit, OnDestroy {
     this.movieSubscription.unsubscribe();
   }
 
+  getImage(path: string) {
+    return this.imgURL + path;
+  }
 }

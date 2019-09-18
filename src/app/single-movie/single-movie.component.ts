@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class SingleMovieComponent implements OnInit {
   title =  'Movie';
-  image = 'image';
+  image = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/';
 
   constructor(private movieService: MovieService, private route: ActivatedRoute) {
 
@@ -19,6 +19,6 @@ export class SingleMovieComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.params.id;
     this.title = this.movieService.getMovieById(+id).title;
-    this.image = this.movieService.getMovieById(+id).image;
+    this.image += this.movieService.getMovieById(+id).poster_path;
   }
 }
