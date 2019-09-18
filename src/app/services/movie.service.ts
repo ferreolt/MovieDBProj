@@ -2,12 +2,18 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+export interface PagedResponse {
+    page: number;
+    total_results: number;
+    total_pages: number;
+    results: [];
+}
 @Injectable()
 export class MovieService {
   moviesSubject = new Subject<any[]>();
   APIkey = '35acf57e110152e86051b27d867edbc2';
    private movies = [];
-   private  result = {};
+    response: PagedResponse;
 
       constructor(private httpClient: HttpClient) { }
 
@@ -23,13 +29,13 @@ export class MovieService {
           this.moviesSubject.next(this.movies.slice());
       }
 
-      getPopularMoviesFromServer() {
-          this.httpClient.get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.APIkey + '&language=en-US&page=1')
+      getPopularMoviesFromServer(page: number) {
+          this.httpClient.get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.APIkey + '&language=en-US&page=' + page)
           .subscribe(
-              (response) => {
-                  this.result = response;
-                  this.movies = this.result.results;
-                  console.log(this.result.results);
+              (response: PagedResponse) => {
+                  this.movies = response.results;
+                  this.response = response;
+                  console.log(response);
                   this.emitMovieSubject();
               },
               (error) => {

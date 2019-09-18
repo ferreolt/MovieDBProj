@@ -11,6 +11,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: 'movies', component: MovieViewComponent},
@@ -28,12 +30,14 @@ const appRoutes: Routes = [
     MovieViewComponent,
     AccueilComponent,
     SingleMovieComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
