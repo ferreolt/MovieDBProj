@@ -16,7 +16,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.movieService.getPopularMoviesFromServer();
     const counter = interval(1000);
     this.counterSubscription = counter.subscribe(
       (value) => {
