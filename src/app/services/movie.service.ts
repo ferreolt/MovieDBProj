@@ -1,34 +1,15 @@
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class MovieService {
   moviesSubject = new Subject<any[]>();
-   private movies = [
-        {
-          id: 1,
-          title : 'Avengers',
-          image : 'https://images-na.ssl-images-amazon.com/images/I/A1t8xCe9jwL._SL1500_.jpg'
-        },
-        {
-            id: 2,
-          title : 'Titanic',
-          image : 'http://cdn.shopify.com/s/files/1/1148/8924/products/MPW-115495-a_1024x1024.jpg?v=1556255572'
-        },
-        {
-            id: 3,
-          title: 'Avatar',
-          image: 'https://images-na.ssl-images-amazon.com/images/I/91FKuRPgwCL._SL1500_.jpg'
-        },
-        {
-            id: 4,
-          title: 'Avatar',
-          image: 'https://images-na.ssl-images-amazon.com/images/I/91FKuRPgwCL._SL1500_.jpg'
-        },
-        {
-            id: 5,
-          title: 'Attack on Titan',
-          image: 'https://media.senscritique.com/media/000006484765/source_big/L_Attaque_des_Titans.jpg'
-        }
-      ];
+  APIkey = '35acf57e110152e86051b27d867edbc2';
+   private movies = [];
+   private  result = {};
+
+      constructor(private httpClient: HttpClient) { }
 
       getMovieById(id: number) {
           const movie = this.movies.find(
@@ -40,5 +21,20 @@ export class MovieService {
       }
       emitMovieSubject() {
           this.moviesSubject.next(this.movies.slice());
+      }
+
+      getPopularMoviesFromServer() {
+          this.httpClient.get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.APIkey + '&language=en-US&page=1')
+          .subscribe(
+              (response) => {
+                  this.result = response;
+                  this.movies = this.result.results;
+                  console.log(this.result.results);
+                  this.emitMovieSubject();
+              },
+              (error) => {
+                  console.log('Erreur: ' + error);
+              }
+          );
       }
 }
