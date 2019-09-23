@@ -1,6 +1,7 @@
 <div class="container">
 <h1>{{title}} {{note * 10}}%</h1>
 <div class="image">
-       <a [routerLink]="[id]"> <img src="{{image}}" alt="movie" ngbPopover="{{review}}" popoverTitle="Overview" [openDelay]="400" triggers="mouseenter:mouseleave" placement="left" container="body"></a>
+       <a [routerLink]="[id]"> <img src="{{image}}" alt="movie" (mouseenter)="popover3.toggle()" (mouseout)="popover3.close()"></a>
+      <div class="hidden_container"><div class="hidden" ngbPopover="{{review}}" popoverTitle="Overview" #popover3="ngbPopover"  placement="bottom" container="body"></div></div> 
 </div>
 </div>
