@@ -12,6 +12,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 const appRoutes: Routes = [
   { path: 'movies', component: MovieViewComponent},
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     AccueilComponent,
     SingleMovieComponent,
     FourOhFourComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,

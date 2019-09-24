@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -47,4 +47,12 @@ export class MovieService {
               }
           );
       }
+
+      search(term: string) {
+        if (term === '') {
+            return of([]);
+        }
+        return this.httpClient.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.APIkey + '&language=en-US&query='
+          + term + '&page=1&include_adult=false').pipe();
+              }
 }
