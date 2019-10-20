@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-bloc',
-  templateUrl: './bloc.component.html',
-  styleUrls: ['./bloc.component.scss']
+  selector: 'app-small-bloc',
+  templateUrl: './small-bloc.component.html',
+  styleUrls: ['./small-bloc.component.scss']
 })
-export class BlocComponent implements OnInit {
+export class SmallBlocComponent implements OnInit {
+
   constructor() { }
 
   @Input() title: string;
@@ -15,6 +16,7 @@ export class BlocComponent implements OnInit {
   @Input() index: number;
   @Input() id: number;
   @Input() review: string;
+
 
   ngOnInit() {
   }

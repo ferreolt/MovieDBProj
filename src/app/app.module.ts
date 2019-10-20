@@ -14,10 +14,15 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { SmallBlocComponent } from './small-bloc/small-bloc.component';
+import { TopRatedMoviesComponent } from './top-rated-movies/top-rated-movies.component';
+import { PlayingMoviesComponent } from './playing-movies/playing-movies.component';
+import { UpcommingMoviesComponent } from './upcomming-movies/upcomming-movies.component';
 
 const appRoutes: Routes = [
   { path: 'movies', component: MovieViewComponent},
   { path: 'accueil', component: AccueilComponent},
+  { path: 'accueil/:id', redirectTo: 'movies/:id'},
   { path: 'result', component: SearchResultComponent},
   { path: 'result/:id', redirectTo: 'movies/:id'},
   { path: 'movies/:id', component: SingleMovieComponent},
@@ -35,6 +40,10 @@ const appRoutes: Routes = [
     SingleMovieComponent,
     FourOhFourComponent,
     SearchResultComponent,
+    SmallBlocComponent,
+    TopRatedMoviesComponent,
+    PlayingMoviesComponent,
+    UpcommingMoviesComponent,
   ],
   imports: [
     BrowserModule,
