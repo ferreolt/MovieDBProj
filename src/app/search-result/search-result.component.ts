@@ -26,7 +26,7 @@ export class SearchResultComponent implements OnInit, OnDestroy {
     this.movieService.getResultFromSearch(this.page);
     this.movieSubscription = this.movieService.moviesSubject.subscribe(
       (movies: any[]) => {
-        this.movies = movies;
+        this.movies = this.movieService.searchMovies;
         this.pageSize = this.movieService.pageSize;
         this.collectionSize = this.movieService.collectionSize;
         this.query = this.movieService.query;
