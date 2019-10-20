@@ -14,3 +14,32 @@ h1{
     display: inline-block;
     font-size: 2vw;
 }
+
+.titleImage {
+  float: left;
+  margin-right: 5px;
+}
+
+.details{
+    width:700px;
+    height: auto;
+    margin-left: 700px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+ // border: 1px solid red;
+}
+
+p {
+    font-size: 1vw;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    font-size: 1.5vw;
+  }

@@ -1,9 +1,28 @@
 <div class="container">
-            
-        
+               
+           
+        <div class="titleImage">
         <h1>{{title}}</h1>
         <div class="image">
                 <img src="{{image}}" alt="movie">
         </div>
-        </div>
-<a routerLink="/movies">Retour à la liste</a>
+</div>
+        <div class="details">
+                <circle-progress
+                [percent]="note * 10"
+                [radius]="100"
+                [outerStrokeWidth]="16"
+                [innerStrokeWidth]="8"
+                [outerStrokeColor]="outterColor"
+                [innerStrokeColor]="innerColor"
+                [animation]="true"
+                [animationDuration]="300"
+                [subtitle]="noteCount + ' votes'"
+                ></circle-progress>
+
+               <p> {{overview}} </p>
+</div>
+</div> 
+<footer class="footer">
+     <a routerLink="/movies">Retour à la liste</a>           
+               </footer>      

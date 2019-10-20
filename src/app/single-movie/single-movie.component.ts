@@ -11,6 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class SingleMovieComponent implements OnInit {
   title =  'Movie';
   image = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/';
+  note: number;
+  noteCount: number;
+  outterColor: string;
+  innerColor: string;
+  overview: string;
 
   constructor(private movieService: MovieService, private route: ActivatedRoute) {
 
@@ -18,7 +23,21 @@ export class SingleMovieComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params.id;
-    this.title = this.movieService.getMovieById(+id).title;
-    this.image += this.movieService.getMovieById(+id).poster_path;
+    const movie = this.movieService.getMovieById(+id);
+    this.title = movie.title;
+    this.image += movie.poster_path;
+    this.overview = movie.overview;
+    this.noteCount = movie.vote_count;
+    this.note = movie.vote_average;
+    if (this.note >= 7) {
+      this.outterColor = '#78C000';
+      this.innerColor = '#C7E596';
+    } else if (this.note < 7 && this.note >= 4) {
+      this.outterColor = '#E37316';
+      this.innerColor = '#E39B16';
+    } else {
+      this.outterColor = '#E81414';
+      this.innerColor = '#E84414';
+    }
   }
 }

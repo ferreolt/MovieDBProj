@@ -7,12 +7,14 @@ export interface PagedResponse {
     total_results: number;
     total_pages: number;
     results: [];
+    genres: [{id: number, name: string}];
 }
 @Injectable()
 export class MovieService {
   moviesSubject = new Subject<any[]>();
-  APIkey = '35acf57e110152e86051b27d867edbc2';
+   private APIkey = '35acf57e110152e86051b27d867edbc2';
    private movies = [];
+   genres: [{id: number, name: string}];
    pageSize: number;
    collectionSize: number;
    query: string;
