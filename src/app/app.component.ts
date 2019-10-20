@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { MovieService } from './services/movie.service';
 import { Observable, interval, Subscription } from 'rxjs';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit, OnDestroy {
     secondes: number;
     counterSubscription: Subscription;
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: MovieService, private searchResult: SearchResultComponent) {
 
   }
 
@@ -32,5 +33,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.counterSubscription.unsubscribe();
+  }
+
+  search(query: string) {
+    this.movieService.query = query;
+    this.searchResult.ngOnInit();
   }
 }

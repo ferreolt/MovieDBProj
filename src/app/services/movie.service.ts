@@ -15,6 +15,7 @@ export class MovieService {
    private movies = [];
    pageSize: number;
    collectionSize: number;
+   query: string;
 
       constructor(private httpClient: HttpClient) { }
 
@@ -46,5 +47,24 @@ export class MovieService {
                   console.log('Erreur: ' + error);
               }
           );
+      }
+
+      getResultFromSearch(page: number) {
+        this.httpClient.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.APIkey + '&language=en-US&query='
+        + this.query + '&page=' + page)
+        .subscribe(
+            (response: PagedResponse) => {
+                this.movies = response.results;
+                this.pageSize = response.total_results / response.total_pages;
+                console.log(this.pageSize);
+                this.collectionSize = response.total_results;
+                console.log(this.collectionSize);
+                console.log(response);
+                this.emitMovieSubject();
+            },
+            (error) => {
+                console.log('Erreur: ' + error);
+            }
+        );
       }
 }

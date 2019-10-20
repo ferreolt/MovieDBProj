@@ -12,10 +12,13 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const appRoutes: Routes = [
   { path: 'movies', component: MovieViewComponent},
   { path: 'accueil', component: AccueilComponent},
+  { path: 'result', component: SearchResultComponent},
+  { path: 'result/:id', redirectTo: 'movies/:id'},
   { path: 'movies/:id', component: SingleMovieComponent},
   { path: '', pathMatch: 'prefix', redirectTo: 'movies'},
   { path: 'not-found', component: FourOhFourComponent},
@@ -30,6 +33,7 @@ const appRoutes: Routes = [
     AccueilComponent,
     SingleMovieComponent,
     FourOhFourComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,

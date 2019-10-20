@@ -304,6 +304,16 @@
   <span>Welcome</span>
     <div class="accueilLink"><a class="fill-div" routerLinkActive="active" routerLink="accueil"> <p>Accueil</p> </a> </div>
     <div class="moviesLink"><a class="fill-div" routerLinkActive="active" routerLink="movies"> <p>Movies</p> </a> </div>
+    <div class="main">
+    <div class="input-group">
+      <input type="text" class="form-control" #searchbar placeholder="Search a movie" >
+      <div class="input-group-append">
+        <button class="btn btn-secondary" type="button" routerLink="result" (click)="search(searchbar.value)">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
     
 </div>
 
