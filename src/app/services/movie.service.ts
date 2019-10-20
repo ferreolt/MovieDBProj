@@ -30,8 +30,6 @@ export class MovieService {
           .subscribe(
             (response: {title: string, poster_path: string, overview: string, vote_count: number, vote_average: number}) => {
                 this.movie = response;
-                console.log('movieservice movie');
-                console.log(this.movie);
                 this.emitMovieSubject();
             },
             (error) => {
@@ -48,8 +46,6 @@ export class MovieService {
         .subscribe(
             (response: PagedResponse) => {
                 this.upcommingMovies = response.results;
-                console.log('up');
-                console.log(this.upcommingMovies);
                 this.emitMovieSubject();
             },
             (error) => {
@@ -63,8 +59,6 @@ export class MovieService {
         .subscribe(
             (response: PagedResponse) => {
                 this.topRatedMovies = response.results;
-                console.log('top');
-                console.log(this.topRatedMovies);
                 this.emitMovieSubject();
             },
             (error) => {
@@ -78,8 +72,6 @@ export class MovieService {
         .subscribe(
             (response: PagedResponse) => {
                 this.nowPlayingMovies = response.results;
-                console.log('playing');
-                console.log(this.nowPlayingMovies);
                 this.emitMovieSubject();
             },
             (error) => {
@@ -95,11 +87,7 @@ export class MovieService {
               (response: PagedResponse) => {
                   this.popularMovies = response.results;
                   this.pageSize = response.total_results / response.total_pages;
-                  console.log(this.pageSize);
                   this.collectionSize = response.total_results;
-                  console.log(this.collectionSize);
-                  console.log('popular');
-                  console.log(response.results);
                   this.emitMovieSubject();
               },
               (error) => {
@@ -115,10 +103,7 @@ export class MovieService {
             (response: PagedResponse) => {
                 this.searchMovies = response.results;
                 this.pageSize = response.total_results / response.total_pages;
-                console.log(this.pageSize);
                 this.collectionSize = response.total_results;
-                console.log(this.collectionSize);
-                console.log(response);
                 this.emitMovieSubject();
             },
             (error) => {
